@@ -15,35 +15,38 @@ import "./App.css";
 import Image from "./components/Image";
 import Description from "./components/Description";
 import Dater from "./components/Dater";
+import NavBar from "./layout/NavBar";
 
 function App() {
   const [serverData, setServerData] = useState({});
-
-  axios
-    .get(
-      "https://api.nasa.gov/planetary/apod?api_key=CNoFpgH9kHTRFjtnUT53R1DQX31Jj2IXOVDq9JpD"
-    )
-    .then(function (response) {
-      console.log(response);
-      setServerData(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-    .finally(function () {});
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
 
   useEffect(() => {
-    return () => {};
+    axios
+      .get(
+        "https://api.nasa.gov/planetary/apod?api_key=CNoFpgH9kHTRFjtnUT53R1DQX31Jj2IXOVDq9JpD"
+      )
+      .then(function (response) {
+        console.log(response);
+        setServerData(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {});
+    //return () => {};
   }, []);
-
+  function test(isim) {
+    console.log("selam", isim);
+  }
   return (
     <div className="App">
-      <Image props={serverData.url} />
-
+      <NavBar />
+      <Dater date={date} />
+      <Image url={serverData.url} selamla={test} />
       <Description photo={serverData.url} />
-      <h4>🚀APOD title:{serverData.title}</h4>
-      <p>🚀APOD explanation:{serverData.explanation}</p>
-      <Dater />
+      <h4>🚀{serverData.title}</h4>
+      <p>🚀{serverData.explanation}</p>
     </div>
   );
 }

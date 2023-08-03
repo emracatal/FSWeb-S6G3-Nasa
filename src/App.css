@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #fcfad6;
+  background-color: yellowgreen;
 }
 
 .App-logo {
@@ -31,16 +31,20 @@
 
 .App h4 {
   color: purple;
+  text-align: center;
+}
+
+.App h3 {
+  color: purple;
   text-align: left;
-  padding: 1rem;
 }
 
 .App p,
 span {
   color: purple;
-  text-align: left;
-  padding: 1rem;
+  text-align: center;
 }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
