@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: yellowgreen;
+  background-color: #e47b7129;
 }
 
 .App-logo {
@@ -45,11 +45,27 @@ span {
   text-align: center;
 }
 
+.App img {
+  max-width: 100%;
+  height: auto;
+}
+
+.App a.nav-link {
+  color: purple;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  .App {
+    background-color: lightblue;
+    display: flex;
   }
 }

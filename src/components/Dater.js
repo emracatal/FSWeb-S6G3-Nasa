@@ -1,13 +1,14 @@
 import React from "react";
-import { useState } from "react";
 
-function Dater() {
-  const [date, setDate] = useState();
+function Dater(props) {
+  const { setDate } = props;
+  const dateHandler = (e) => {
+    setDate(e.target.value);
+  };
 
-  console.log("date", date);
   return (
     <div>
-      <input type="date" onChange={(e) => setDate(e.target.value)} />{" "}
+      <input type="date" id="date" name="date" onChange={dateHandler} />
     </div>
   );
 }

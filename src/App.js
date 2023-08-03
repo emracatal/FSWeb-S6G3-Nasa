@@ -23,26 +23,28 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(
-        "https://api.nasa.gov/planetary/apod?api_key=CNoFpgH9kHTRFjtnUT53R1DQX31Jj2IXOVDq9JpD"
-      )
+      .get("https://api.nasa.gov/planetary/apod", {
+        params: {
+          api_key: "CNoFpgH9kHTRFjtnUT53R1DQX31Jj2IXOVDq9JpD",
+          date: date,
+        },
+      })
       .then(function (response) {
         console.log(response);
         setServerData(response.data);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
-      })
-      .finally(function () {});
-    //return () => {};
-  }, []);
+      });
+  }, [date]);
+
   function test(isim) {
     console.log("selam", isim);
   }
   return (
     <div className="App">
       <NavBar />
-      <Dater date={date} />
+      <Dater setDate={setDate} />
       <Image url={serverData.url} selamla={test} />
       <Description photo={serverData.url} />
       <h4>🚀{serverData.title}</h4>
